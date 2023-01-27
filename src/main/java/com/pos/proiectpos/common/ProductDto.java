@@ -6,11 +6,11 @@ import java.util.List;
 
 public class ProductDto {
     Long id;
-    String quantity;
+    int quantity;
     String name;
-    String price;
+    float price;
 
-    public ProductDto(Long id, String licensePlate, String parkingSpot,String price) {
+    public ProductDto(Long id, int quantity, String name, float price) {
         this.id = id;
         this.quantity = quantity;
         this.name = name;
@@ -21,7 +21,7 @@ public class ProductDto {
         return id;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -29,7 +29,7 @@ public class ProductDto {
         return name;
     }
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 

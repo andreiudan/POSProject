@@ -3,7 +3,6 @@ package com.pos.proiectpos.ejb;
 import com.pos.proiectpos.common.CarDto;
 import com.pos.proiectpos.common.CarPhotoDto;
 import com.pos.proiectpos.common.ProductDto;
-import com.pos.proiectpos.entities.Car;
 import com.pos.proiectpos.entities.CarPhoto;
 import com.pos.proiectpos.entities.User;
 import jakarta.ejb.EJBException;
@@ -19,22 +18,12 @@ import java.util.stream.Collectors;
 
 @Stateless
 public class ProductsBean {
-    private static final Logger LOG = Logger.getLogger(ProductsBean.class.getName());
+    private static final Logger LOG = Logger.getLogger(ProductBean.class.getName());
 
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<ProductDto> findAllProducts() {
-        LOG.info("findAllCars");
-        try {
-            TypedQuery<Product> typedQuery = entityManager.createQuery("SELECT c FROM Product c", Product.class);
-            List<Car> cars = typedQuery.getResultList();
-            return copyCarsToDto(cars);
-        } catch (Exception ex) {
-            throw new EJBException(ex);
 
-        }
-    }
 
     private List<CarDto> copyCarsToDto(List<Car> cars) {
         List<CarDto> carDto;

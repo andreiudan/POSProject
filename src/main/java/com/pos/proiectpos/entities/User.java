@@ -47,18 +47,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-    private Collection<Car> cars;
-
-    @OneToMany(mappedBy ="owner")
-    public Collection<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(Collection<Car> cars) {
-        this.cars = cars;
-    }
-
-
 }
