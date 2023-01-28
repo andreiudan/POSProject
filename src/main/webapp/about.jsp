@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<t:pageTemplate pageTitle="About ParkingLot">
-    <h1>Bine ati venit la site-ul pentru parcari.Va vom arata cine a luat amenda si cine nu</h1>
+<t:pageTemplate pageTitle="About POS">
+    <h1>Bine ati venit la site-ul pentru POS.</h1>
 </t:pageTemplate>

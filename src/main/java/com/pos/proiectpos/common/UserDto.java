@@ -2,32 +2,39 @@ package com.pos.proiectpos.common;
 
 public class UserDto {
     private String username;
-    private String email;
     private Long id;
 
+    private String firstName;
+    private String lastName;
+    private String position;
 
-    public UserDto(String username, String email, Long id) {
+
+    public UserDto(String username, Long id, String firstName, String lastName, String position) {
 
         this.username = username;
-        this.email = email;
-        this.id=id;
-
-
-
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.position = position;
     }
 
     public String getUsername() {
         return username;
     }
 
-    public String getEmail() {
-        return email;
-    }
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPosition() {
+        return position;
     }
 }

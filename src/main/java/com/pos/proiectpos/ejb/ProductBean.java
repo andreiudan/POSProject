@@ -49,7 +49,7 @@ public class ProductBean {
         List<ProductDto> productDto;
         productDto = products.
                 stream().
-                map(x -> new ProductDto(x.getId(), x.getQuantity(), x.getName(), x.getPrice())).collect(Collectors.toList());
+                map(x -> new ProductDto(x.getId(), x.getQuantity(), x.getName(), x.getPrice(), x.getBarcode(), x.getDescription(), x.getCategory())).collect(Collectors.toList());
         return productDto;
     }
 }

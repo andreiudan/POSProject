@@ -41,7 +41,7 @@ public class UserBean
         List<UserDto> userDto;
         userDto = users
                 .stream()
-                .map(x -> new UserDto(x.getUsername(), x.getEmail(),x.getId())).collect(Collectors.toList());
+                .map(x -> new UserDto(x.getUsername(), x.getId(), x.getFirstName(), x.getLastName(), x.getPosition())).collect(Collectors.toList());
         return userDto;
     }
 
@@ -49,7 +49,6 @@ public class UserBean
         LOG.info("createUser");
         User newUser = new User();
         newUser.setUsername(username);
-        newUser.setEmail(email);
         newUser.setPassword(passwordBean.convertToSha256(password));
         entityManager.persist(newUser);
         assignGroupsToUser(username, groups);

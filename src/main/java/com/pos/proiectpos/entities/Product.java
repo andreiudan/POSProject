@@ -11,9 +11,16 @@ public class Product {
 
     public int quantity;
 
+
     public String name;
 
     public float price;
+
+    public String barcode;
+
+    public String description;
+
+    public String category;
 
     @Id
     @GeneratedValue
@@ -47,5 +54,29 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
