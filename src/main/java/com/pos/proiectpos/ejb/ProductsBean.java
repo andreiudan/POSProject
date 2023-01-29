@@ -79,6 +79,7 @@ public class ProductsBean {
 
     */
 /*
+
         //add the car to its new owner
         User user=entityManager.find(User.class,userId);
         user.getCars().add(product);
