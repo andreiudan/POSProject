@@ -3,7 +3,7 @@ package com.pos.proiectpos.ejb;
 import com.pos.proiectpos.common.ProductDto;
 import com.pos.proiectpos.common.ProductPhotoDto;
 import com.pos.proiectpos.entities.Product;
-import com.pos.proiectpos.servlets.ProductPhoto;
+import com.pos.proiectpos.servlets.ProductPhotos;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -98,9 +98,10 @@ public class ProductsBean {
         }
     }
 
+
     public void addPhotoToProduct(Long productId, String filename, String fileType, byte[] fileContent) {
         LOG.info("addPhotoToProduct");
-        ProductPhoto photo = new ProductPhoto();
+        ProductPhotos photo = new ProductPhotos();
         photo.setFilename(filename);
         photo.setFileType(fileType);
         photo.setFileContent(fileContent);
@@ -114,15 +115,17 @@ public class ProductsBean {
     }
 
     public ProductPhotoDto findPhotoByProductId(Integer productId) {
-        List<ProductPhoto> photos = entityManager
-                .createQuery("SELECT p FROM ProductPhoto p where p.product.id = :id", ProductPhoto.class)
+        List<ProductPhotos> photos = entityManager
+                .createQuery("SELECT p FROM ProductPhoto p where p.product.id = :id", ProductPhotos.class)
                 .setParameter("id", productId)
                 .getResultList();
         if (photos.isEmpty()) {
             return null;
         }
-        ProductPhoto photo = photos.get(0); // the first element
+        ProductPhotos photo = photos.get(0); // the first element
         return new ProductPhotoDto(photo.getId(), photo.getFilename(), photo.getFileType(), photo.getFileContent());
     }
+
+
 
 }

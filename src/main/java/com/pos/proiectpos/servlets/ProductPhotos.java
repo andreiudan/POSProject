@@ -1,3 +1,4 @@
+
 package com.pos.proiectpos.servlets;
 
 import com.pos.proiectpos.common.ProductPhotoDto;
@@ -9,13 +10,15 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "ProductPhoto", value = "/ProductPhoto")
-public class ProductPhoto extends HttpServlet {
+@WebServlet(name = "ProductPhotos", value = "/ProductPhotos")
+public class ProductPhotos extends HttpServlet {
     @Inject
     ProductsBean productsBean;
     @Override
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer productId=Integer.parseInt(request.getParameter("id"));
+
         ProductPhotoDto photo=productsBean.findPhotoByProductId(productId);
         if(photo != null)
         {
@@ -34,3 +37,4 @@ public class ProductPhoto extends HttpServlet {
 
     }
 }
+
