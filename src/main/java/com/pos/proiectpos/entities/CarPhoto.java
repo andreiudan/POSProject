@@ -11,7 +11,7 @@ public class CarPhoto {
      String filename;
      String fileType;
      byte[] fileContent;
-     Car car;
+     Product product;
 
     @Id
     @GeneratedValue
@@ -32,7 +32,7 @@ public class CarPhoto {
     public void setFileContent(byte[] fileContent) {this.fileContent = fileContent;}
 
     @OneToOne
-    public Car getCar() {return car;}
+    public Product getProduct() {return product;}
 
-    public void setCar(Car car) {this.car = car;}
+    public void setProduct(Product product) {this.product = product;}
 }
