@@ -69,7 +69,7 @@ public class ProductsBean {
         return new ProductDto(product.getId(),product.getQuantity(),product.getName(),product.getPrice(),product.getBarcode(),product.getDescription(),product.getCategory());
     }
 
-    public void updateProduct(Long productId, int quantity, String name,float price,String barcode,String description,String category) {
+    public void updateProduct(Long productId,String name,int quantity,float price,String barcode,String description,String category) {
         LOG.info("updateProduct");
 
         Product product=entityManager.find(Product.class,productId);

@@ -11,10 +11,9 @@ public class UserDto {
 
     private String position;
 
-    public UserDto(String username, Long id, String firstName, String lastName, String position) {
-
-        this.username = username;
+    public UserDto(Long id,String username, String firstName, String lastName, String position) {
         this.id = id;
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
