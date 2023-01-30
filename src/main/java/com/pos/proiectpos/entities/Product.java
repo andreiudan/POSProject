@@ -1,13 +1,12 @@
 package com.pos.proiectpos.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
     private Long id;
     public int quantity;
+
     public String name;
     public float price;
     public String barcode;
@@ -57,5 +56,16 @@ public class Product {
     }
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    private ProductPhoto photo;
+
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    public ProductPhoto getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(ProductPhoto photo) {
+        this.photo = photo;
     }
 }
