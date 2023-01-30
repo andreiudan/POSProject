@@ -15,6 +15,7 @@ import java.io.IOException;
 public class AddProductPhoto extends HttpServlet {
     @Inject
     ProductsBean productsBean;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long productId=Long.parseLong(request.getParameter("id"));

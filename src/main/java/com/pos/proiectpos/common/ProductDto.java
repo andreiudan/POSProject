@@ -1,19 +1,19 @@
 package com.pos.proiectpos.common;
 
-import com.pos.proiectpos.entities.User;
-
-import java.util.List;
-
-
-
 public class ProductDto {
-     Long id;
-     int quantity;
-     String name;
-     float price;
-     String barcode;
-     String description;
-     String category;
+     private Long id;
+
+     private int quantity;
+
+     private String name;
+
+     private float price;
+
+     private String barcode;
+
+     private String description;
+
+     private String category;
 
     public ProductDto(Long id, int quantity, String name, float price, String barcode, String description, String category) {
         this.id = id;

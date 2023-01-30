@@ -2,8 +2,6 @@ package com.pos.proiectpos.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
-
 @Entity
 public class User {
     private Long id;

@@ -23,20 +23,23 @@ import java.util.List;
         httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"WRITE_CARS"})})
 @WebServlet(name = "Products", value = "/Products")
 public class Products extends HttpServlet {
-
     @Inject
     ProductsBean productsBean;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductDto> products = productsBean.findAllProducts();
+
         request.setAttribute("products",products);
         request.setAttribute("activePage","eq");
+
         request.getRequestDispatcher("/WEB-INF/pages/products.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] productIdsAsString=request.getParameterValues("product_ids");
+
         if(productIdsAsString !=null)
         {
             List<Long> productIds=new ArrayList<>();
@@ -45,6 +48,7 @@ public class Products extends HttpServlet {
             }
             productsBean.deleteProductsByIds(productIds);
         }
+
         response.sendRedirect(request.getContextPath() + "/Products");
     }
 }

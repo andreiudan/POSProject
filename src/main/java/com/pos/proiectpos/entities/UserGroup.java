@@ -7,7 +7,9 @@ import jakarta.persistence.Id;
 @Entity
 public class UserGroup {
     private Long id;
+
     private String username;
+
     private String userGroup;
 
     @Id

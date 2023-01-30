@@ -15,7 +15,9 @@ public class PasswordBean {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             messageDigest.update(password.getBytes());
+
             byte[] digest = messageDigest.digest();
+
             String result = new BigInteger(1, digest).toString(16);
             return result;
         } catch (NoSuchAlgorithmException ex) {

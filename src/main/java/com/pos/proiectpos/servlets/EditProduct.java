@@ -30,6 +30,7 @@ public class EditProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<UserDto> users=userBean.findAllUsers();
         request.setAttribute("users",users);
+
         Long productId=Long.parseLong(request.getParameter("id"));
         ProductDto product=productsBean.findById(productId);
         request.setAttribute("product",product);

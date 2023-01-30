@@ -7,7 +7,7 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class ProductPhoto {
-     Long id;
+     private Long id;
      String filename;
      String fileType;
      byte[] fileContent;

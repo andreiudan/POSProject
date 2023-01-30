@@ -27,31 +27,37 @@ public class UserBean
 
     public List<UserDto> findAllUsers() {
         LOG.info("findAllUsers");
+
         try {
             TypedQuery<User> typedQuery = entityManager.createQuery("SELECT u FROM User u", User.class);
             List<User> users = typedQuery.getResultList();
+
             return copyUsersToDto(users);
         } catch (Exception ex) {
             throw new EJBException(ex);
-
         }
     }
 
     private List<UserDto> copyUsersToDto(List<User> users) {
+        LOG.info("copyUsersToDto");
+
         List<UserDto> userDto;
         userDto = users
                 .stream()
                 .map(x -> new UserDto(x.getUsername(), x.getId(), x.getFirstName(), x.getLastName(), x.getPosition())).collect(Collectors.toList());
+
         return userDto;
     }
 
     public void createUser(String username, String password, String firstName, String lastName, Collection<String> groups) {
         LOG.info("createUser");
+
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(passwordBean.convertToSha256(password));
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);
+
         entityManager.persist(newUser);
         assignGroupsToUser(username, groups);
     }

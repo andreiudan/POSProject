@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Sale {
-    Long id;
+    private Long id;
 
     Long cashierId;
 

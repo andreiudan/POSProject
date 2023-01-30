@@ -14,12 +14,12 @@ import java.io.IOException;
 public class ProductPhotos extends HttpServlet {
     @Inject
     ProductsBean productsBean;
-    @Override
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer productId=Integer.parseInt(request.getParameter("id"));
-
         ProductPhotoDto photo=productsBean.findPhotoByProductId(productId);
+
         if(photo != null)
         {
             response.setContentType(photo.getFileType());
@@ -29,7 +29,6 @@ public class ProductPhotos extends HttpServlet {
         else{
             response.sendError(HttpServletResponse.SC_NOT_FOUND);//Error 404
         }
-
     }
 
     @Override

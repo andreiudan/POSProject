@@ -8,11 +8,13 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.util.Arrays;
+
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_USERS"}))
 @WebServlet(name = "AddUser", value = "/AddUser")
 public class AddUser extends HttpServlet {
     @Inject
     UserBean usersBean;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("userGroups", new String[] {"READ_CARS", "WRITE_CARS", "READ_USERS", "WRITE_USERS"});
