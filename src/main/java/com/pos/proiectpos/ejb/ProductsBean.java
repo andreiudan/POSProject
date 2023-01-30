@@ -79,8 +79,6 @@ public class ProductsBean {
    /*
         User oldUser=product.getOwner();
         oldUser.getProducts().remove(product);
-
-
     */
 /*
 
