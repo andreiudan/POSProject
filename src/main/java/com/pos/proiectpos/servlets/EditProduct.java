@@ -22,10 +22,9 @@ import java.util.List;
 public class EditProduct extends HttpServlet {
     @Inject
     UserBean userBean;
+
     @Inject
     ProductsBean productsBean;
-
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,15 +39,15 @@ public class EditProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int quantity= Integer.parseInt(request.getParameter("quantity"));
-        String name=request.getParameter("name");
-        float price= Float.parseFloat(request.getParameter("price"));
-        String barcode=request.getParameter("name");
-        String description=request.getParameter("name");
-        String category=request.getParameter("category");
-        Long productId=Long.parseLong(request.getParameter("product_id"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String name = request.getParameter("name");
+        float price = Float.parseFloat(request.getParameter("price"));
+        String barcode = request.getParameter("barcode");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+        Long productId = Long.parseLong(request.getParameter("product_id"));
 
-        productsBean.updateProduct(productId,quantity,name,price,barcode,description,category);
+        productsBean.updateProduct(productId, quantity, name, price, barcode, description, category);
 
         response.sendRedirect(request.getContextPath() + "/Products");
     }

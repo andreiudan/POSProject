@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Recipe {
+public class Receipt {
     Long id;
 
     Long productId;

@@ -45,11 +45,13 @@ public class UserBean
         return userDto;
     }
 
-    public void createUser(String username, String email, String password, Collection<String> groups) {
+    public void createUser(String username, String password, String firstName, String lastName, Collection<String> groups) {
         LOG.info("createUser");
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(passwordBean.convertToSha256(password));
+        newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);
         entityManager.persist(newUser);
         assignGroupsToUser(username, groups);
     }

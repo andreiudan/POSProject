@@ -26,9 +26,9 @@ import java.util.List;
 public class Users extends HttpServlet {
     @Inject
     UserBean userBean;
+
     @Inject
     InvoiceBean invoiceBean;
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

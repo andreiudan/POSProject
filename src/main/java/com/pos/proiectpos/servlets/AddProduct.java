@@ -31,10 +31,13 @@ public class AddProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name=request.getParameter("name");
-        int quantity= Integer.parseInt(request.getParameter("quantity"));
-        float price= Float.parseFloat(request.getParameter("price"));
-        Long Id=Long.parseLong(request.getParameter("id"));
-        productsBean.createProduct(name,quantity,price,Id);
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        float price = Float.parseFloat(request.getParameter("price"));
+        String description = request.getParameter("description");
+        String barcode = request.getParameter("barcode");
+        String category = request.getParameter("category");
+
+        productsBean.createProduct(name,quantity,price,barcode,description,category);
 
         response.sendRedirect(request.getContextPath() + "/Products");
 

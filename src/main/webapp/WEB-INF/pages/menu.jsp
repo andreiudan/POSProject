@@ -16,7 +16,7 @@
                         <c:if test="${pageContext.request.isUserInRole('READ_CARS')}">
                             <a class="nav-link
                              ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/products.jsp' ? ' active' : ''}"
-                               aria-current="page" href="${pageContext.request.contextPath}/Cars">Cars</a>
+                               aria-current="page" href="${pageContext.request.contextPath}/Products">Products</a>
                         </c:if>
                     </li>
                     <li class="nav-item">

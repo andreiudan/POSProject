@@ -22,13 +22,16 @@ public class AddUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
-        String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
         String[] userGroups = request.getParameterValues("user_groups");
+
         if (userGroups == null) {
             userGroups = new String[0];
         }
-        usersBean.createUser(username, email, password, Arrays.asList(userGroups));
+
+        usersBean.createUser(username, password, firstName, lastName, Arrays.asList(userGroups));
         response.sendRedirect(request.getContextPath() + "/Users");
     }
 }

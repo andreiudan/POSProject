@@ -2,12 +2,14 @@ package com.pos.proiectpos.common;
 
 public class UserDto {
     private String username;
+
     private Long id;
 
     private String firstName;
-    private String lastName;
-    private String position;
 
+    private String lastName;
+
+    private String position;
 
     public UserDto(String username, Long id, String firstName, String lastName, String position) {
 

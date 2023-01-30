@@ -1,13 +1,13 @@
 package com.pos.proiectpos.common;
 
-public class RecipeDto {
+public class ReceiptDto {
     private Long id;
 
     private Long productId;
 
     private int quantity;
 
-    public RecipeDto(Long id, Long productId, int quantity) {
+    public ReceiptDto(Long id, Long productId, int quantity) {
         this.id = id;
         this.productId = productId;
         this.quantity = quantity;

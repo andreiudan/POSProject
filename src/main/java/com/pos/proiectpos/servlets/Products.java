@@ -30,7 +30,6 @@ public class Products extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductDto> products = productsBean.findAllProducts();
         request.setAttribute("products",products);
-        request.setAttribute("numberOfFreeParkingSpots",10);
         request.setAttribute("activePage","eq");
         request.getRequestDispatcher("/WEB-INF/pages/products.jsp").forward(request,response);
     }

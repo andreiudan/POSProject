@@ -24,13 +24,16 @@ public class ProductsBean {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void createProduct(String name,int quantity, float price, Long id) {
+    public void createProduct(String name,int quantity, float price, String barcode, String description, String category) {
         LOG.info("createProduct");
 
         Product product= new Product();
         product.name = name;
         product.quantity = quantity;
         product.price = price;
+        product.barcode = barcode;
+        product.description = description;
+        product.category = category;
 
         entityManager.persist(product);
     }
