@@ -15,9 +15,11 @@
 
       <div class="container text-center">
         <div class="row">
-          <div class="col">
+          <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
+            <div class="col">
 
-          </div>
+            </div>
+          </c:if>
           <div class="col">
             Name
           </div>
@@ -36,18 +38,22 @@
           <div class="col">
             Photo
           </div>
-          <div class="col">
+          <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
+            <div class="col">
 
-          </div>
-          <div class="col">
+            </div>
+            <div class="col">
 
-          </div>
+            </div>
+          </c:if>
         </div>
         <c:forEach var="product" items="${products}">
         <div class="row">
-          <div class="col">
-            <input type ="checkbox" name="product_ids" value="${product.id}" />
-          </div>
+          <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
+            <div class="col">
+              <input type ="checkbox" name="product_ids" value="${product.id}" />
+            </div>
+          </c:if>
           <div class="col">
               ${product.name}
           </div>

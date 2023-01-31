@@ -29,6 +29,20 @@
                         <a class="nav-link ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/cart.jsp' ? 'active' : ''}"
                            aria-current="page" href="${pageContext.request.contextPath}/Cart">Cart</a>
                     </li>
+                    <li class="nav-item">
+                        <c:if test="${pageContext.request.isUserInRole('DIRECTOR')}">
+                            <a class="nav-link
+                             ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/validate.jsp' ? ' active' : ''}"
+                               aria-current="page" href="${pageContext.request.contextPath}/ValidateUsers">Validate</a>
+                        </c:if>
+                    </li>
+                    <li class="nav-item">
+                        <c:if test="${pageContext.request.isUserInRole('DIRECTOR')}">
+                            <a class="nav-link
+                             ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/invalidate.jsp' ? ' active' : ''}"
+                               aria-current="page" href="${pageContext.request.contextPath}/InvalidateUsers">Invalidate</a>
+                        </c:if>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link disabled">Disabled</a>

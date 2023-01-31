@@ -45,7 +45,7 @@ public class UserBean
         List<UserDto> userDto;
         userDto = users
                 .stream()
-                .map(x -> new UserDto(x.getId(),x.getUsername(), x.getFirstName(), x.getLastName(), x.getPosition())).collect(Collectors.toList());
+                .map(x -> new UserDto(x.getId(),x.getUsername(), x.getFirstName(), x.getLastName(), x.getPosition(), x.getValidation())).collect(Collectors.toList());
 
         return userDto;
     }
@@ -71,6 +71,7 @@ public class UserBean
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setPosition(position);
+        user.setValidation(false);
     }
 
     public void deleteUsersByIds(Collection<Long> userIds) {
@@ -99,5 +100,45 @@ public class UserBean
                         .getResultList();
 
         return username;
+    }
+
+    public List<UserDto> findAllInvalidUsers() {
+        LOG.info("findAllInvalidUsers");
+
+        try {
+            TypedQuery<User> typedQuery = entityManager.createQuery("SELECT u FROM User u WHERE u.validation=false", User.class);
+            List<User> users = typedQuery.getResultList();
+
+            return copyUsersToDto(users);
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
+
+    public void validateUser(Long userId) {
+        LOG.info("validateUser");
+
+        User user=entityManager.find(User.class,userId);
+        user.setValidation(true);
+    }
+
+    public List<UserDto> findAllValidUsers() {
+        LOG.info("findAllValidUsers");
+
+        try {
+            TypedQuery<User> typedQuery = entityManager.createQuery("SELECT u FROM User u WHERE u.validation=true", User.class);
+            List<User> users = typedQuery.getResultList();
+
+            return copyUsersToDto(users);
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
+
+    public void invalidateUser(Long userId) {
+        LOG.info("invalidateUser");
+
+        User user=entityManager.find(User.class,userId);
+        user.setValidation(false);
     }
 }

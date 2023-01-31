@@ -11,12 +11,15 @@ public class UserDto {
 
     private String position;
 
-    public UserDto(Long id,String username, String firstName, String lastName, String position) {
+    private boolean validation;
+
+    public UserDto(Long id,String username, String firstName, String lastName, String position, boolean validation) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
+        this.validation = validation;
     }
 
     public String getUsername() {
@@ -37,5 +40,9 @@ public class UserDto {
 
     public String getPosition() {
         return position;
+    }
+
+    public boolean getValidation() {
+        return validation;
     }
 }

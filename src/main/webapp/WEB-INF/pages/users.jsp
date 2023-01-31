@@ -22,16 +22,19 @@
 
         </div>
         <div class="col">
-          UserName
+          Username
         </div>
         <div class="col">
-          FirstName
+          First Name
         </div>
         <div class="col">
-          LastName
+          Last Name
         </div>
         <div class="col">
           Position
+        </div>
+        <div class="col">
+          Validation
         </div>
         <div class="col">
 
@@ -53,6 +56,9 @@
           </div>
           <div class="col">
               ${user.position}
+          </div>
+          <div class="col">
+              ${user.validation}
           </div>
         <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
           <div class="col">
