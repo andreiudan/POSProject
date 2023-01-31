@@ -3,14 +3,19 @@ package com.pos.proiectpos.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.Collection;
 
 @Entity
 public class Receipt {
     private Long id;
 
-    Long productId;
+    Long cashierId;
 
-    int quantity;
+    String date;
+
+    private Collection<Sales> soldProducts;
 
     @Id
     @GeneratedValue
@@ -22,19 +27,28 @@ public class Receipt {
         this.id = id;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getCashierId() {
+        return cashierId;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setCashierId(Long cashierId) {
+        this.cashierId = cashierId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getDate() {
+        return date;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @OneToMany
+    public Collection<Sales> getSoldProducts() {
+        return soldProducts;
+    }
+
+    public void setSoldProducts(Collection<Sales> soldProducts) {
+        this.soldProducts = soldProducts;
     }
 }

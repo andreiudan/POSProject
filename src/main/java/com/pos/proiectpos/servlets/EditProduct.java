@@ -5,6 +5,7 @@ import com.pos.proiectpos.common.ProductDto;
 import com.pos.proiectpos.common.UserDto;
 import com.pos.proiectpos.ejb.ProductsBean;
 import com.pos.proiectpos.ejb.UserBean;
+import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.HttpConstraint;
@@ -17,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_CARS"}))
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"ADMIN", "DIRECTOR"}))
 @WebServlet(name = "EditProduct", value = "/EditProduct")
 public class EditProduct extends HttpServlet {
     @Inject

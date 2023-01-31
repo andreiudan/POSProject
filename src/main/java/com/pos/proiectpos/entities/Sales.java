@@ -5,12 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Sale {
+public class Sales {
     private Long id;
 
-    Long cashierId;
+    Long productId;
 
-    String date;
+    int quantity;
 
     @Id
     @GeneratedValue
@@ -22,19 +22,19 @@ public class Sale {
         this.id = id;
     }
 
-    public Long getCashierId() {
-        return cashierId;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setCashierId(Long cashierId) {
-        this.cashierId = cashierId;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public String getDate() {
-        return date;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

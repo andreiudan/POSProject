@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@DeclareRoles({"READ_USERS", "WRITE_USERS"})
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
-        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"WRITE_USERS"})})
+@DeclareRoles({"ADMIN", "DIRECTOR"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"ADMIN"}),
+        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"ADMIN"})})
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet {
     @Inject

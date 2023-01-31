@@ -5,10 +5,10 @@
 <t:pageTemplate pageTitle="Products">
   <h1>Products</h1>
     <form method="POST" action="${pageContext.request.contextPath}/Products">
-      <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+      <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
       <a href="${pageContext.request.contextPath}/AddProduct" class="btn btn-primary btn-lg" >Add product</a>
       </c:if>
-      <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+      <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
       <button class="btn btn-danger" type="submit"> Delete Products</button>
       </c:if>
 
@@ -65,7 +65,7 @@
           <div class="col">
             <img src="${pageContext.request.contextPath}/ProductPhotos?id=${product.id}" witdh="48" height="40"/>
           </div>
-          <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+          <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
             <div class="col">
               <a class="btn btn-secondary"
                  href="${pageContext.request.contextPath}/AddProductPhoto?id=${product.id}" role="button">Add photo</a>
