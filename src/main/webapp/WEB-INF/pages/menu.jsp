@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
@@ -13,21 +14,20 @@
                         ("/")) eq '/about.jsp' ? ' active' : ''}" aria-current="page" href="${pageContext.request.contextPath}/about.jsp">About</a>
                     </li>
                     <li class="nav-item">
-                        <c:if test="${pageContext.request.isUserInRole('READ_CARS')}">
-                            <a class="nav-link
-                             ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/products.jsp' ? ' active' : ''}"
-                               aria-current="page" href="${pageContext.request.contextPath}/Products">Products</a>
-                        </c:if>
+                        <a class="nav-link
+                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/products.jsp' ? ' active' : ''}"
+                           aria-current="page" href="${pageContext.request.contextPath}/Products">Products</a>
                     </li>
                     <li class="nav-item">
-                        <c:if test="${pageContext.request.isUserInRole('READ_USERS')}">
+                        <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
                             <a class="nav-link
                              ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/users.jsp' ? ' active' : ''}"
                                aria-current="page" href="${pageContext.request.contextPath}/Users">Users</a>
                         </c:if>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/cart.jsp' ? 'active' : ''}"
+                           aria-current="page" href="${pageContext.request.contextPath}/Cart">Cart</a>
                     </li>
 
                     <li class="nav-item">

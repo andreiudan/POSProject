@@ -3,25 +3,25 @@ package com.pos.proiectpos.common;
 public class ReceiptDto {
     private Long id;
 
-    private Long productId;
+    private Long cashierId;
 
-    private int quantity;
+    private String date;
 
-    public ReceiptDto(Long id, Long productId, int quantity) {
+    public ReceiptDto(Long id, Long cashierId, String date) {
         this.id = id;
-        this.productId = productId;
-        this.quantity = quantity;
+        this.cashierId = cashierId;
+        this.date = date;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getCashierId() {
+        return cashierId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getDate() {
+        return date;
     }
 }

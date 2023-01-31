@@ -84,6 +84,7 @@ public class UserBean
     }
     private void assignGroupsToUser(String username, Collection<String> groups) {
         LOG.info("assignGroupsToUser");
+
         for (String group : groups) {
             UserGroup userGroup = new UserGroup();
             userGroup.setUsername(username);
@@ -96,6 +97,7 @@ public class UserBean
                 entityManager.createQuery("Select u.username FROM User u WHERE u.id IN :userIds",String.class)
                         .setParameter("userIds",userIds)
                         .getResultList();
+
         return username;
     }
 }
