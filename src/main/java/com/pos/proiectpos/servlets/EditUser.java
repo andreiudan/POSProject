@@ -16,16 +16,10 @@ import java.util.List;
 public class EditUser extends HttpServlet {
     @Inject
     UserBean userBean;
-    @Inject
-    ProductsBean productsBean;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<UserDto> users=userBean.findAllUsers();
         request.setAttribute("users",users);
-
-        Long productId=Long.parseLong(request.getParameter("id"));
-        ProductDto product=productsBean.findById(productId);
-        request.setAttribute("product",product);
         request.getRequestDispatcher("/WEB-INF/pages/editUser.jsp").forward(request,response);
     }
 
@@ -41,6 +35,6 @@ public class EditUser extends HttpServlet {
 
         userBean.updateUser(userId,username,password,firstName,lastName,position);
 
-        response.sendRedirect(request.getContextPath() + "/Products");
+        response.sendRedirect(request.getContextPath() + "/Users");
     }
 }

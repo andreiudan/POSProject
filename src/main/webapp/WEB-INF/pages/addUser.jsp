@@ -42,6 +42,15 @@
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
+        <label for="position">Position</label>
+        <input type="text" class="form-control" id="position" name="position" placeholder="" value="" required>
+        <div class="invalid-feedback">
+          Position is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
         <label for="user_groups">Groups</label>
         <select class="custom-select d-block w-100" id="user_groups" name="user_groups" multiple>
           <option value="">Choose...</option>

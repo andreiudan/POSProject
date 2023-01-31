@@ -37,10 +37,6 @@ public class Users extends HttpServlet {
         request.setAttribute("users",users);
         request.setAttribute("activePage","eq");
 
-        if (!invoiceBean.getUserIds().isEmpty()){
-            Collection<String> usernames=userBean.findUsernamesByUserIds(invoiceBean.getUserIds());
-            request.setAttribute("invoices",usernames);
-        }
 
         request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request,response);
     }
@@ -55,7 +51,6 @@ public class Users extends HttpServlet {
             {
                 userIds.add(Long.parseLong(userIdasString));
             }
-            invoiceBean.getUserIds().addAll(userIds);
             userBean.deleteUsersByIds(userIds);
         }
         response.sendRedirect(request.getContextPath()+"/Users");
