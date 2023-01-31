@@ -56,9 +56,9 @@ public class Users extends HttpServlet {
                 userIds.add(Long.parseLong(userIdasString));
             }
             invoiceBean.getUserIds().addAll(userIds);
+            userBean.deleteUsersByIds(userIds);
         }
         response.sendRedirect(request.getContextPath()+"/Users");
-
     }
 
 }

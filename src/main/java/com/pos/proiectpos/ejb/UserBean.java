@@ -1,6 +1,7 @@
 package com.pos.proiectpos.ejb;
 
 import com.pos.proiectpos.common.UserDto;
+import com.pos.proiectpos.entities.Product;
 import com.pos.proiectpos.entities.User;
 import com.pos.proiectpos.entities.UserGroup;
 import jakarta.ejb.EJBException;
@@ -44,7 +45,7 @@ public class UserBean
         List<UserDto> userDto;
         userDto = users
                 .stream()
-                .map(x -> new UserDto(x.getUsername(), x.getId(), x.getFirstName(), x.getLastName(), x.getPosition())).collect(Collectors.toList());
+                .map(x -> new UserDto(x.getId(),x.getUsername(), x.getFirstName(), x.getLastName(), x.getPosition())).collect(Collectors.toList());
 
         return userDto;
     }
@@ -60,6 +61,26 @@ public class UserBean
 
         entityManager.persist(newUser);
         assignGroupsToUser(username, groups);
+    }
+    public void updateUser(Long userId, String username,String password, String firstName,String lastName,String position) {
+        LOG.info("updateUser");
+
+        User user=entityManager.find(User.class,userId);
+        user.setId(userId);
+        user.setUsername(username);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPosition(position);
+    }
+
+    public void deleteUsersByIds(Collection<Long> userIds) {
+        LOG.info("deleteUserssByIds");
+
+        for(Long userId:userIds)
+        {
+            User user=entityManager.find(User.class,userId);
+            entityManager.remove(user);
+        }
     }
     private void assignGroupsToUser(String username, Collection<String> groups) {
         LOG.info("assignGroupsToUser");
