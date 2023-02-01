@@ -53,10 +53,7 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="barcode">Barcode</label>
-        <input type="text" class="form-control" id="barcode" name="barcode" placeholder="" value="" required>
-        <div class="invalid-feedback">
-          Product barcode is required
-        </div>
+        <input type="text" class="form-control" id="barcode" name="barcode" placeholder="" value="">
       </div>
     </div>
     <hr class="nb-4">

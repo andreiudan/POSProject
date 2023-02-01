@@ -11,7 +11,7 @@ import java.util.Collection;
 public class Receipt {
     private Long id;
 
-    Long cashierId;
+    private Long cashierId;
 
     String date;
 
