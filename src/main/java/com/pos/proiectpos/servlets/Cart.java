@@ -4,7 +4,9 @@ import com.pos.proiectpos.common.ProductDto;
 import com.pos.proiectpos.common.SalesDto;
 import com.pos.proiectpos.ejb.ProductsBean;
 
+import com.pos.proiectpos.ejb.ReceiptBean;
 import com.pos.proiectpos.ejb.SalesBean;
+import com.pos.proiectpos.entities.Receipt;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -30,6 +32,9 @@ public class Cart extends HttpServlet {
     @Inject
     SalesBean salesBean;
 
+    @Inject
+    ReceiptBean receiptBean;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Long> salesProductIds = salesBean.findAllSalesIds();
@@ -48,18 +53,6 @@ public class Cart extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*        String productIdAsString = request.getParameter("product_id");
-        if (productIdAsString != null) {
-            long productId = Long.parseLong(productIdAsString);
-            ProductDto product = productsBean.findById(productId);
-            HttpSession session = request.getSession();
-            List<ProductDto> products = (List<ProductDto>) session.getAttribute("cart");
-            if (products == null) {
-                products = new ArrayList<>();
-            }
-            products.add(product);
-            session.setAttribute("cart", products);
-        }
-        response.sendRedirect(request.getContextPath() + "/Cart");*/
+
     }
 }

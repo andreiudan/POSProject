@@ -150,4 +150,18 @@ public class UserBean
         User user=entityManager.find(User.class,userId);
         user.setValidation(false);
     }
+
+    public UserDto findUserByUsername(String username) {
+        LOG.info("findByUsername");
+
+        try {
+            TypedQuery<User> typedQuery = entityManager.createQuery("SELECT u FROM User u WHERE u.username=:username", User.class);
+            typedQuery.setParameter("username", username);
+            User user = typedQuery.getSingleResult();
+
+            return new UserDto(user.getId(),user.getUsername(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getPosition(),user.getValidation());
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
 }

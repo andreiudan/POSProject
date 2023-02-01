@@ -1,24 +1,27 @@
 package com.pos.proiectpos.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.json.bind.annotation.JsonbTransient;
+import jakarta.persistence.*;
 
 import java.util.Collection;
+import java.util.Date;
+
+import static jakarta.persistence.CascadeType.ALL;
 
 @Entity
 public class Receipt {
+    @Id
+    @GeneratedValue
     private Long id;
 
     private Long cashierId;
 
-    String date;
+    Date date;
 
+    @JsonbTransient
+    @OneToMany(cascade = ALL,mappedBy = "receipt")
     private Collection<Sales> soldProducts;
 
-    @Id
-    @GeneratedValue
     public Long getId() {
         return id;
     }
@@ -35,15 +38,15 @@ public class Receipt {
         this.cashierId = cashierId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    @OneToMany
+
     public Collection<Sales> getSoldProducts() {
         return soldProducts;
     }
