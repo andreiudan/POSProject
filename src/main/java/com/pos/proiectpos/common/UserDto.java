@@ -8,7 +8,9 @@ public class UserDto {
     private String lastName;
     private String position;
 
-    public UserDto(Long id,String username,String password, String firstName, String lastName, String position) {
+    private boolean validation;
+
+    public UserDto(Long id,String username,String password, String firstName, String lastName, String position, boolean validation) {
         this.id = id;
         this.username = username;
         this.password=password;
@@ -40,5 +42,9 @@ public class UserDto {
     
     public String getPassword() {
         return password;
+    }
+
+    public boolean getValidation() {
+        return validation;
     }
 }
