@@ -1,5 +1,6 @@
 package com.pos.proiectpos.ejb;
 
+import com.pos.proiectpos.common.ProductDto;
 import com.pos.proiectpos.common.UserDto;
 import com.pos.proiectpos.entities.Product;
 import com.pos.proiectpos.entities.User;
@@ -45,7 +46,7 @@ public class UserBean
         List<UserDto> userDto;
         userDto = users
                 .stream()
-                .map(x -> new UserDto(x.getId(),x.getUsername(), x.getFirstName(), x.getLastName(), x.getPosition(), x.getValidation())).collect(Collectors.toList());
+                .map(x -> new UserDto(x.getId(),x.getUsername(),x.getPassword(), x.getFirstName(), x.getLastName(), x.getPosition())).collect(Collectors.toList());
 
         return userDto;
     }
@@ -58,9 +59,18 @@ public class UserBean
         newUser.setPassword(passwordBean.convertToSha256(password));
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);
-
+        newUser.setPosition(groups.toString());
         entityManager.persist(newUser);
         assignGroupsToUser(username, groups);
+
+    }
+    public UserDto findById(Long userId)
+    {
+        LOG.info("findById");
+
+        User user=entityManager.find(User.class,userId);
+
+        return new UserDto(user.getId(),user.getUsername(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getPosition());
     }
     public void updateUser(Long userId, String username,String password, String firstName,String lastName,String position) {
         LOG.info("updateUser");
@@ -68,10 +78,9 @@ public class UserBean
         User user=entityManager.find(User.class,userId);
         user.setId(userId);
         user.setUsername(username);
+        user.setPassword(passwordBean.convertToSha256(password));
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        user.setPosition(position);
-        user.setValidation(false);
     }
 
     public void deleteUsersByIds(Collection<Long> userIds) {

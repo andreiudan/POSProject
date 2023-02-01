@@ -20,6 +20,9 @@ public class EditUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<UserDto> users=userBean.findAllUsers();
         request.setAttribute("users",users);
+        Long userId=Long.parseLong(request.getParameter("id"));
+        UserDto user=userBean.findById(userId);
+        request.setAttribute("user",user);
         request.getRequestDispatcher("/WEB-INF/pages/editUser.jsp").forward(request,response);
     }
 

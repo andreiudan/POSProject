@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="password">password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="" value="${user.password}" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="password" value="" required>
                 <div class="invalid-feedback">
                     Password is required
                 </div>

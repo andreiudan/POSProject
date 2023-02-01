@@ -14,8 +14,6 @@
       <button class="btn btn-danger" type="submit"> Delete Users</button>
     </c:if>
 
-
-    <button class="btn btn-secondary" type="submit"> Invoice</button>
     <div class="container text-center">
       <div class="row">
         <div class="col">
