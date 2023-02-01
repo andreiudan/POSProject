@@ -27,5 +27,9 @@
         </c:if>
     </form>
     <br>
+    <div class="col">
+        <a class="btn btn-danger"
+           href="${pageContext.request.contextPath}/DeleteFromCart?id=${product.id}" role="button">PayByCash</a>
+    </div>
     <label>Total:</label>
 </t:pageTemplate>

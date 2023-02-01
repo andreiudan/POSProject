@@ -77,4 +77,5 @@ public class SalesBean {
             throw new EJBException(ex);
         }
     }
+
 }
