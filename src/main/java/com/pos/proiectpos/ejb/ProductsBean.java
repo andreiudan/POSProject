@@ -104,6 +104,7 @@ public class ProductsBean {
         if (product.getPhoto() != null) {
             entityManager.remove(product.getPhoto());
         }
+
         product.setPhoto(photo);
         photo.setProduct(product);
         entityManager.persist(photo);

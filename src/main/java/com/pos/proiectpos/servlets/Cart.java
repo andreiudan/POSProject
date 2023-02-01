@@ -34,12 +34,15 @@ public class Cart extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Long> salesProductIds = salesBean.findAllSalesIds();
         List<ProductDto> products = new ArrayList<>();
+        List<SalesDto> sales = new ArrayList<>();
 
         if (salesProductIds != null) {
             products = productsBean.findProductsByIds(salesProductIds);
+            sales = salesBean.findAllSales();
         }
 
         request.setAttribute("products", products);
+        request.setAttribute("sales", sales);
         request.setAttribute("activePage", "cart");
         request.getRequestDispatcher("/WEB-INF/pages/cart.jsp").forward(request, response);
     }
