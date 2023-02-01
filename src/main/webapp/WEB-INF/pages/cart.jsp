@@ -5,4 +5,16 @@
 
 <t:pageTemplate pageTitle="ShoppingCart">
     <h2>Shopping Cart</h2>
+    <c:if test="${not empty products}">
+        <div class="row">
+            <c:forEach var="product" items="${products}">
+                <div class="col">
+                    ${product.name}
+                </div>
+                <div class="col">
+                    ${product.price}
+                </div>
+            </c:forEach>
+        </div>
+    </c:if>
 </t:pageTemplate>

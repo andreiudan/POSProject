@@ -19,6 +19,20 @@
                            aria-current="page" href="${pageContext.request.contextPath}/Products">Products</a>
                     </li>
                     <li class="nav-item">
+                        <c:choose>
+                            <c:when test="${pageContext.request.isUserInRole('CASHIER')}">
+                                <a class="nav-link
+                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/sale.jsp' ? ' active' : ''}"
+                                   href="${pageContext.request.contextPath}/Sale">Products</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="nav-link
+                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/products.jsp' ? ' active' : ''}"
+                                   href="${pageContext.request.contextPath}/Products">Products</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
+                    <li class="nav-item">
                         <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
                             <a class="nav-link
                              ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/users.jsp' ? ' active' : ''}"
