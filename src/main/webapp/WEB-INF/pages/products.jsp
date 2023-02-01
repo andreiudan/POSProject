@@ -4,20 +4,22 @@
 
 <t:pageTemplate pageTitle="Products">
   <h1>Products</h1>
-    <form method="POST" action="${pageContext.request.contextPath}/Products">
+
       <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
       <a href="${pageContext.request.contextPath}/AddProduct" class="btn btn-primary btn-lg" >Add product</a>
       </c:if>
-
+  <form method="POST" action="${pageContext.request.contextPath}/Products">
       <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
       <button class="btn btn-danger" type="submit"> Delete Products</button>
       </c:if>
 
       <div class="container text-center">
         <div class="row">
-          <div class="col">
+          <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
+            <div class="col">
 
-          </div>
+            </div>
+          </c:if>
           <div class="col">
             Name
           </div>
@@ -36,18 +38,22 @@
           <div class="col">
             Photo
           </div>
-          <div class="col">
+          <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
+            <div class="col">
 
-          </div>
-          <div class="col">
+            </div>
+            <div class="col">
 
-          </div>
+            </div>
+          </c:if>
         </div>
         <c:forEach var="product" items="${products}">
         <div class="row">
-          <div class="col">
-            <input type ="checkbox" name="product_ids" value="${product.id}" />
-          </div>
+          <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
+            <div class="col">
+              <input type ="checkbox" name="product_ids" value="${product.id}" />
+            </div>
+          </c:if>
           <div class="col">
               ${product.name}
           </div>
@@ -66,7 +72,7 @@
           <div class="col">
             <img src="${pageContext.request.contextPath}/ProductPhotos?id=${product.id}" witdh="48" height="40"/>
           </div>
-
+          </form>
           <c:if test="${pageContext.request.isUserInRole('ADMIN') || pageContext.request.isUserInRole('DIRECTOR')}">
             <div class="col">
               <a class="btn btn-secondary"
@@ -77,8 +83,22 @@
             </div>
           </c:if>
 
+          <form method="POST" action="${pageContext.request.contextPath}/AddToCart">
+          <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
+            <div class="col">
+              <input type="number" name="quantity" id="quantity" placeholder="" value="">
+            </div>
+            <div class="col">
+              <input type="checkbox" name="product_ids" value="${product.id}">
+            </div>
+          </c:if>
+
         </div>
         </c:forEach>
-    </form>
-
+      <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
+        <div class="col">
+          <button class="btn btn-secondary" type="submit">Add to Cart</button>
+        </div>
+      </c:if>
+  </form>
 </t:pageTemplate>

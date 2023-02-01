@@ -26,6 +26,8 @@ public class User {
 
     private String position;
 
+    private boolean validation;
+
     public String getFirstName() {
         return firstName;
     }
@@ -65,5 +67,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean getValidation() {
+        return validation;
+    }
+
+    public void setValidation(boolean validation) {
+        this.validation = validation;
     }
 }
