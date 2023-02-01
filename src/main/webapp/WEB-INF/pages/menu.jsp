@@ -26,7 +26,8 @@
                         </c:if>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/cart.jsp' ? 'active' : ''}"
+                        <a class="nav-link
+                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/cart.jsp' ? ' active' : ''}"
                            aria-current="page" href="${pageContext.request.contextPath}/Cart">Cart</a>
                     </li>
 
