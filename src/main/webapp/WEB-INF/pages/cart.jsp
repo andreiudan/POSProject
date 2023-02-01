@@ -28,9 +28,9 @@
                 </div>
             </c:forEach>
         </c:if>
-    </form>
-    <br>
 
+    <br>
+    <input type="hidden" name="sales" id="sales" value="${sales}">
     <c:set var="total" value="${0}"/>
     <c:forEach var="product" items="${products}" varStatus="status">
         <c:set var="total" value="${total + (product.price * sales[status.index].quantity)}"/>
@@ -39,11 +39,12 @@
     <div class="row">
         <div class="col">
             <a class="btn btn-danger"
-               href="${pageContext.request.contextPath}/PayByCash?total=${total}" role="button">PayByCash</a>
+               href="${pageContext.request.contextPath}/PayByCash?total=${total}" type="submit" role="button">PayByCash</a>
         </div>
         <div class="col">
             <a class="btn btn-danger"
                href="${pageContext.request.contextPath}/PayByCard?total=${total}?sales=${sales}" role="button">PayByCard</a>
         </div>
     </div>
+    </form>
 </t:pageTemplate>

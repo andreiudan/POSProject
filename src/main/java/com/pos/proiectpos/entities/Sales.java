@@ -1,19 +1,21 @@
 package com.pos.proiectpos.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Sales {
+    @Id
+    @GeneratedValue
     private Long id;
 
     Long productId;
 
     int quantity;
 
-    @Id
-    @GeneratedValue
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "receipt_id",nullable = false)
+    Receipt receipt;
+
     public Long getId() {
         return id;
     }

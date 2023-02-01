@@ -1,5 +1,9 @@
 package com.pos.proiectpos.common;
 
+import com.pos.proiectpos.entities.Sales;
+
+import java.util.List;
+
 public class ReceiptDto {
     private Long id;
 
@@ -7,10 +11,13 @@ public class ReceiptDto {
 
     private String date;
 
-    public ReceiptDto(Long id, Long cashierId, String date) {
+    private List<SalesDto> sales;
+
+    public ReceiptDto(Long id, Long cashierId, String date, List<SalesDto> sales) {
         this.id = id;
         this.cashierId = cashierId;
         this.date = date;
+        this.sales = sales;
     }
 
     public Long getId() {
@@ -23,5 +30,9 @@ public class ReceiptDto {
 
     public String getDate() {
         return date;
+    }
+
+    public List<SalesDto> getSales() {
+        return sales;
     }
 }

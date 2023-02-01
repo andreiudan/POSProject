@@ -40,7 +40,9 @@ public class Sale extends HttpServlet {
         if(productIdsAsString !=null)
         {
             for(String productIdAsString:productIdsAsString){
-                salesBean.createSale(Long.parseLong(productIdAsString));
+                if(!salesBean.checkIfSaleExists(Long.parseLong(productIdAsString))){
+                    salesBean.createSale(Long.parseLong(productIdAsString));
+                }
             }
         }
 

@@ -78,4 +78,25 @@ public class SalesBean {
         }
     }
 
+    public boolean checkIfSaleExists(Long productId){
+        LOG.info("checkIfSaleExists");
+
+        try {
+            Sales sale = null;
+
+            TypedQuery<Sales> typedQuery = entityManager.createQuery("SELECT s FROM Sales s WHERE s.productId = :productId ", Sales.class)
+                    .setParameter("productId", productId);
+            if(!(typedQuery.getResultList().isEmpty())){
+                sale = typedQuery.getSingleResult();
+            }
+
+            if (sale != null) {
+                return true;
+            }
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+        return false;
+    }
+
 }
