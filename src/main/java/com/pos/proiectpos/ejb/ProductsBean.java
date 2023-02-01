@@ -125,6 +125,15 @@ public class ProductsBean {
         return new ProductPhotoDto(photo.getId(), photo.getFilename(), photo.getFileType(), photo.getFileContent());
     }
 
+    public List<ProductDto> findProductsByIds(Collection<Long> productsIds){
+        LOG.info("findProductsByIds");
 
+        List<Product> products=
+                entityManager.createQuery("Select p FROM Product p WHERE p.id IN :productsIds",Product.class)
+                        .setParameter("productsIds",productsIds)
+                        .getResultList();
+
+        return copyProductsToDto(products);
+    }
 
 }
