@@ -46,7 +46,7 @@ public class UserBean
         List<UserDto> userDto;
         userDto = users
                 .stream()
-                .map(x -> new UserDto(x.getId(),x.getUsername(),x.getPassword(), x.getFirstName(), x.getLastName(), x.getPosition())).collect(Collectors.toList());
+                .map(x -> new UserDto(x.getId(),x.getUsername(),x.getPassword(), x.getFirstName(), x.getLastName(), x.getPosition(), x.getValidation())).collect(Collectors.toList());
 
         return userDto;
     }
@@ -70,7 +70,7 @@ public class UserBean
 
         User user=entityManager.find(User.class,userId);
 
-        return new UserDto(user.getId(),user.getUsername(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getPosition());
+        return new UserDto(user.getId(),user.getUsername(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getPosition(),user.getValidation());
     }
     public void updateUser(Long userId, String username,String password, String firstName,String lastName,String position) {
         LOG.info("updateUser");
