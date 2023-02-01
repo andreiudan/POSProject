@@ -5,8 +5,11 @@ import com.pos.proiectpos.common.SalesDto;
 import com.pos.proiectpos.ejb.ProductsBean;
 
 import com.pos.proiectpos.ejb.SalesBean;
+import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.HttpConstraint;
+import jakarta.servlet.annotation.ServletSecurity;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +20,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@DeclareRoles({"CASHIER"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"CASHIER"}))
 @WebServlet(name = "Cart", value = "/Cart")
 public class Cart extends HttpServlet {
     @Inject

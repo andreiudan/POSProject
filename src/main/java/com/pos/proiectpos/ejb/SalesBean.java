@@ -1,6 +1,7 @@
 package com.pos.proiectpos.ejb;
 
 import com.pos.proiectpos.common.SalesDto;
+import com.pos.proiectpos.entities.Product;
 import com.pos.proiectpos.entities.Sales;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
@@ -59,5 +60,21 @@ public class SalesBean {
                 map(x -> new SalesDto(x.getId(), x.getProductId(), x.getQuantity())).collect(Collectors.toList());
 
         return salesDto;
+    }
+
+    public void deleteSale(Long productId) {
+        LOG.info("deleteSale");
+
+        try {
+            Sales sale = entityManager.createQuery("SELECT s FROM Sales s WHERE s.productId = :productId ", Sales.class)
+                    .setParameter("productId", productId)
+                    .getSingleResult();
+
+            if (sale != null) {
+                entityManager.remove(sale);
+            }
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
     }
 }

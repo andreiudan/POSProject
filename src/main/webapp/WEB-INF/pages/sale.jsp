@@ -70,12 +70,6 @@
         <div class="col">
           <img src="${pageContext.request.contextPath}/ProductPhotos?id=${product.id}" witdh="48" height="40"/>
         </div>
-        <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
-          <div class="col">
-            <label>Quantity</label>
-            <input type="number" name="quantity" id="quantity" placeholder="" value="" min="0">
-          </div>
-        </c:if>
       </div>
     </c:forEach>
   </form>
