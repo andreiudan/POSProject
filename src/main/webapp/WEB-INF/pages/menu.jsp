@@ -14,20 +14,15 @@
                         ("/")) eq '/about.jsp' ? ' active' : ''}" aria-current="page" href="${pageContext.request.contextPath}/about.jsp">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link
-                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/products.jsp' ? ' active' : ''}"
-                           aria-current="page" href="${pageContext.request.contextPath}/Products">Products</a>
-                    </li>
-                    <li class="nav-item">
                         <c:choose>
                             <c:when test="${pageContext.request.isUserInRole('CASHIER')}">
                                 <a class="nav-link
-                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/sale.jsp' ? ' active' : ''}"
+                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/sale.jsp' ? ' active' : ''}"
                                    href="${pageContext.request.contextPath}/Sale">Products</a>
                             </c:when>
                             <c:otherwise>
                                 <a class="nav-link
-                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/products.jsp' ? ' active' : ''}"
+                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf("/")) eq '/products.jsp' ? ' active' : ''}"
                                    href="${pageContext.request.contextPath}/Products">Products</a>
                             </c:otherwise>
                         </c:choose>
@@ -40,9 +35,11 @@
                         </c:if>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link
-                         ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/cart.jsp' ? ' active' : ''}"
-                           aria-current="page" href="${pageContext.request.contextPath}/Cart">Cart</a>
+                        <c:if test="${pageContext.request.isUserInRole('CASHIER')}">
+                            <a class="nav-link
+                             ${pageContext.request.requestURI.substring(pageContext.request.requestURI.lastIndexOf  ("/")) eq '/cart.jsp' ? ' active' : ''}"
+                               aria-current="page" href="${pageContext.request.contextPath}/Cart">Cart</a>
+                        </c:if>
                     </li>
                     <li class="nav-item">
                         <c:if test="${pageContext.request.isUserInRole('DIRECTOR')}">

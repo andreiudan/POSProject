@@ -5,16 +5,27 @@
 
 <t:pageTemplate pageTitle="ShoppingCart">
     <h2>Shopping Cart</h2>
-    <c:if test="${not empty products}">
-        <div class="row">
+    <form  method="POST" action="">
+        <c:if test="${not empty products}">
             <c:forEach var="product" items="${products}">
-                <div class="col">
-                    ${product.name}
-                </div>
-                <div class="col">
-                    ${product.price}
+                <div class="row">
+                    <div class="col">
+                        ${product.name}
+                    </div>
+                    <div class="col">
+                        ${product.price}
+                    </div>
+                    <div class="col">
+                        <input type="number" name="quantity" id="quantity" placeholder="" value="1" min="1" max="${product.quantity}">
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-danger"
+                           href="${pageContext.request.contextPath}/DeleteFromCart?id=${product.id}" role="button">Delete</a>
+                    </div>
                 </div>
             </c:forEach>
-        </div>
-    </c:if>
+        </c:if>
+    </form>
+    <br>
+    <label>Total:</label>
 </t:pageTemplate>

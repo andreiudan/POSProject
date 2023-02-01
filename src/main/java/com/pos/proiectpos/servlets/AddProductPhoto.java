@@ -23,7 +23,6 @@ public class AddProductPhoto extends HttpServlet {
         request.setAttribute("product",product);
 
         request.getRequestDispatcher("/WEB-INF/pages/addProductPhoto.jsp").forward(request,response);
-
     }
 
     @Override
