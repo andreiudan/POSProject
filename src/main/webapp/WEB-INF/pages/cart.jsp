@@ -7,6 +7,23 @@
     <h2>Shopping Cart</h2>
     <form  method="POST" action="">
         <c:if test="${not empty products}">
+            <div class="row">
+                <div class="col">
+                        Name
+                </div>
+                <div class="col">
+                        Price
+                </div>
+                <div class="col">
+                        Quantity
+                </div>
+                <div class="col">
+
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
             <c:forEach var="product" items="${products}" varStatus="status">
                 <div class="row">
                     <div class="col">
@@ -36,15 +53,14 @@
     <c:forEach var="product" items="${products}" varStatus="status">
         <c:set var="total" value="${total + (product.price * sales[status.index].quantity)}"/>
     </c:forEach>
-    <label>Total: ${total} lei</label>
+    <label>Total price: ${total} lei</label>
     <div class="row">
-        <div class="col">
-            <a class="btn btn-danger"
-               href="${pageContext.request.contextPath}/PayByCash?total=${total}" role="button">PayByCash</a>
-        </div>
-        <div class="col">
-            <a class="btn btn-danger"
-               href="${pageContext.request.contextPath}/PayByCard?total=${total}" role="button">PayByCard</a>
+            <div class="col">
+                <a class="btn btn-danger"
+                   href="${pageContext.request.contextPath}/PayByCash?total=${total}" role="button">PayByCash</a>
+                <a class="btn btn-danger"
+                   href="${pageContext.request.contextPath}/PayByCard?total=${total}" role="button">PayByCard</a>
+            </div>
         </div>
     </div>
 </t:pageTemplate>

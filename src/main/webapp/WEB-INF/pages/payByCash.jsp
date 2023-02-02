@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <div>
-          Total: ${total} lei
+          Total price: ${total} lei
         </div>
       </div>
     </div>
