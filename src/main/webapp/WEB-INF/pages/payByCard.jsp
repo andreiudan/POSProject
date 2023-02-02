@@ -12,7 +12,6 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <div>
-                    ${sales[1].quantity}
                     Total: ${total} lei
                 </div>
             </div>

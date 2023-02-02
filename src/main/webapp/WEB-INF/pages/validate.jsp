@@ -2,7 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<t:pageTemplate pageTitle="ShoppingCart">
+<t:pageTemplate pageTitle="UserValidation">
   <h1>Users Validation</h1>
   <form method="POST" action="${pageContext.request.contextPath}/ValidateUsers">
   <c:if test="${not empty invalidUsers}">

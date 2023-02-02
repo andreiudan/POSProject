@@ -24,18 +24,18 @@ public class ReceiptBean {
     public void createReceipt(Long cashierId, Collection<SalesDto> soldProducts){
         LOG.info("createReceipt");
 
-        List<Sales> sales = new ArrayList();
+        /*List<Sales> sales = new ArrayList();
         for(SalesDto sale : soldProducts){
             Sales s = new Sales();
             s.setProductId(sale.getProductId());
             s.setQuantity(sale.getQuantity());
             sales.add(s);
-        }
+        }*/
 
         Receipt receipt = new Receipt();
         receipt.setCashierId(cashierId);
         receipt.setDate(new Date());
-        receipt.setSoldProducts(sales);
+        //receipt.setSoldProducts(sales);
 
         entityManager.persist(receipt);
     }

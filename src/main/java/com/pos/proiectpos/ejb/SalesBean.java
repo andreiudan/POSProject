@@ -26,6 +26,7 @@ public class SalesBean {
 
         Sales sale = new Sales();
         sale.setProductId(productId);
+        sale.setQuantity(1);
 
         entityManager.persist(sale);
     }
@@ -97,6 +98,20 @@ public class SalesBean {
             throw new EJBException(ex);
         }
         return false;
+    }
+
+    public void updateSale(Long salesId, int quantity) {
+        LOG.info("updateSale");
+        Sales sale=entityManager.find(Sales.class,salesId);
+        sale.setQuantity(quantity);
+    }
+
+    public SalesDto findById(Long saleId) {
+        LOG.info("findById");
+
+        Sales sale = entityManager.find(Sales.class, saleId);
+
+        return new SalesDto(sale.getId(), sale.getProductId(), sale.getQuantity());
     }
 
 }
