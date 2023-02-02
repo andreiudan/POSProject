@@ -19,32 +19,32 @@
                         ${sales[status.index].quantity}
                     </div>
                     <div class="col">
-                        <input type="number" name="quantity" id="quantity" placeholder="" value="1" min="1" max="${product.quantity}">
-                    </div>
-                    <div class="col">
                         <a class="btn btn-danger"
                            href="${pageContext.request.contextPath}/DeleteFromCart?id=${product.id}" role="button">Delete</a>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-primary btn-lg"
+                           href="${pageContext.request.contextPath}/EditCart?id=${sales[status.index].id}" role="button">Quantity</a>
                     </div>
                 </div>
             </c:forEach>
         </c:if>
-
+    </form>
     <br>
     <input type="hidden" name="sales" id="sales" value="${sales}">
     <c:set var="total" value="${0}"/>
     <c:forEach var="product" items="${products}" varStatus="status">
         <c:set var="total" value="${total + (product.price * sales[status.index].quantity)}"/>
     </c:forEach>
-    <label>Total: ${total}</label>
+    <label>Total: ${total} lei</label>
     <div class="row">
         <div class="col">
             <a class="btn btn-danger"
-               href="${pageContext.request.contextPath}/PayByCash?total=${total}" type="submit" role="button">PayByCash</a>
+               href="${pageContext.request.contextPath}/PayByCash?total=${total}" role="button">PayByCash</a>
         </div>
         <div class="col">
             <a class="btn btn-danger"
-               href="${pageContext.request.contextPath}/PayByCard?total=${total}?sales=${sales}" role="button">PayByCard</a>
+               href="${pageContext.request.contextPath}/PayByCard?total=${total}" role="button">PayByCard</a>
         </div>
     </div>
-    </form>
 </t:pageTemplate>
